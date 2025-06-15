@@ -1,0 +1,903 @@
+{
+    "content": [
+        {
+            "id": 306413,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-05-15",
+            "dayOfWeek": 5,
+            "scheduledIn": "00:00:00",
+            "checkIn": "10:23:25",
+            "scheduledOut": "00:00:00",
+            "checkOut": "18:58:09",
+            "isLateIn": false,
+            "isEarlyOut": false,
+            "totalTime": "00:00:00",
+            "remarks": "WEEKEND"
+        },
+        {
+            "id": 305976,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-05-14",
+            "dayOfWeek": 4,
+            "scheduledIn": "08:10:00",
+            "checkIn": "10:53:43",
+            "scheduledOut": "16:00:00",
+            "checkOut": "19:22:49",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "08:29:06",
+            "remarks": "LATE: Y, EARLY: N"
+        },
+        {
+            "id": 303984,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-05-13",
+            "dayOfWeek": 3,
+            "scheduledIn": "08:10:00",
+            "checkIn": "11:24:34",
+            "scheduledOut": "16:00:00",
+            "checkOut": "19:07:26",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "07:42:52",
+            "remarks": "LATE: Y, EARLY: N"
+        },
+        {
+            "id": 302122,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "date": "2025-05-12",
+            "dayOfWeek": 2,
+            "scheduledIn": "08:10:00",
+            "scheduledOut": "16:00:00",
+            "isLateIn": false,
+            "isEarlyOut": false,
+            "totalTime": "00:00:00",
+            "remarks": "APPLIED LEAVE"
+        },
+        {
+            "id": 300279,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "date": "2025-05-11",
+            "dayOfWeek": 1,
+            "scheduledIn": "00:00:00",
+            "scheduledOut": "00:00:00",
+            "isLateIn": false,
+            "isEarlyOut": false,
+            "totalTime": "00:00:00",
+            "remarks": "HOLIDAY: Buddha Purnima"
+        },
+        {
+            "id": 298610,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-05-10",
+            "dayOfWeek": 7,
+            "scheduledIn": "08:10:00",
+            "checkIn": "11:15:58",
+            "scheduledOut": "16:00:00",
+            "checkOut": "16:42:54",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "05:26:56",
+            "remarks": "LATE: Y, EARLY: N"
+        },
+        {
+            "id": 296753,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "date": "2025-05-09",
+            "dayOfWeek": 6,
+            "scheduledIn": "00:00:00",
+            "scheduledOut": "00:00:00",
+            "isLateIn": false,
+            "isEarlyOut": false,
+            "totalTime": "00:00:00",
+            "remarks": "WEEKEND"
+        },
+        {
+            "id": 294896,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-05-08",
+            "dayOfWeek": 5,
+            "scheduledIn": "00:00:00",
+            "checkIn": "11:13:01",
+            "scheduledOut": "00:00:00",
+            "checkOut": "19:11:21",
+            "isLateIn": false,
+            "isEarlyOut": false,
+            "totalTime": "00:00:00",
+            "remarks": "WEEKEND"
+        },
+        {
+            "id": 293035,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-05-07",
+            "dayOfWeek": 4,
+            "scheduledIn": "08:10:00",
+            "checkIn": "10:50:15",
+            "scheduledOut": "16:00:00",
+            "checkOut": "18:47:24",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "07:57:09",
+            "remarks": "LATE: Y, EARLY: N"
+        },
+        {
+            "id": 291153,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-05-06",
+            "dayOfWeek": 3,
+            "scheduledIn": "08:10:00",
+            "checkIn": "11:18:24",
+            "scheduledOut": "16:00:00",
+            "checkOut": "20:45:45",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "09:27:21",
+            "remarks": "LATE: Y, EARLY: N"
+        },
+        {
+            "id": 289334,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-05-05",
+            "dayOfWeek": 2,
+            "scheduledIn": "08:10:00",
+            "checkIn": "11:06:16",
+            "scheduledOut": "16:00:00",
+            "checkOut": "19:15:04",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "08:08:48",
+            "remarks": "LATE: Y, EARLY: N"
+        },
+        {
+            "id": 287485,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-05-04",
+            "dayOfWeek": 1,
+            "scheduledIn": "08:10:00",
+            "checkIn": "11:01:33",
+            "scheduledOut": "16:00:00",
+            "checkOut": "18:51:48",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "07:50:15",
+            "remarks": "LATE: Y, EARLY: N"
+        },
+        {
+            "id": 285673,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-05-03",
+            "dayOfWeek": 7,
+            "scheduledIn": "08:10:00",
+            "checkIn": "11:08:20",
+            "scheduledOut": "16:00:00",
+            "checkOut": "19:27:54",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "08:19:34",
+            "remarks": "LATE: Y, EARLY: N"
+        },
+        {
+            "id": 283733,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "date": "2025-05-02",
+            "dayOfWeek": 6,
+            "scheduledIn": "00:00:00",
+            "scheduledOut": "00:00:00",
+            "isLateIn": false,
+            "isEarlyOut": false,
+            "totalTime": "00:00:00",
+            "remarks": "WEEKEND"
+        },
+        {
+            "id": 281781,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "date": "2025-05-01",
+            "dayOfWeek": 5,
+            "scheduledIn": "00:00:00",
+            "scheduledOut": "00:00:00",
+            "isLateIn": false,
+            "isEarlyOut": false,
+            "totalTime": "00:00:00",
+            "remarks": "HOLIDAY: International Labor Day"
+        },
+        {
+            "id": 279938,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-04-30",
+            "dayOfWeek": 4,
+            "scheduledIn": "08:10:00",
+            "checkIn": "10:22:51",
+            "scheduledOut": "16:00:00",
+            "checkOut": "18:30:59",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "08:08:08",
+            "remarks": "LATE: Y, EARLY: N"
+        },
+        {
+            "id": 278020,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-04-29",
+            "dayOfWeek": 3,
+            "scheduledIn": "08:10:00",
+            "checkIn": "11:43:02",
+            "scheduledOut": "16:00:00",
+            "checkOut": "19:08:28",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "07:25:26",
+            "remarks": "LATE: Y, EARLY: N"
+        },
+        {
+            "id": 276108,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-04-28",
+            "dayOfWeek": 2,
+            "scheduledIn": "08:10:00",
+            "checkIn": "11:06:03",
+            "scheduledOut": "16:00:00",
+            "checkOut": "19:37:29",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "08:31:26",
+            "remarks": "LATE: Y, EARLY: N"
+        },
+        {
+            "id": 274143,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-04-27",
+            "dayOfWeek": 1,
+            "scheduledIn": "08:10:00",
+            "checkIn": "10:50:42",
+            "scheduledOut": "16:00:00",
+            "checkOut": "18:31:42",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "07:41:00",
+            "remarks": "LATE: Y, EARLY: N"
+        },
+        {
+            "id": 272330,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-04-26",
+            "dayOfWeek": 7,
+            "scheduledIn": "08:10:00",
+            "checkIn": "10:56:00",
+            "scheduledOut": "16:00:00",
+            "checkOut": "19:15:53",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "08:19:53",
+            "remarks": "LATE: Y, EARLY: N"
+        },
+        {
+            "id": 269776,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "date": "2025-04-25",
+            "dayOfWeek": 6,
+            "scheduledIn": "00:00:00",
+            "scheduledOut": "00:00:00",
+            "isLateIn": false,
+            "isEarlyOut": false,
+            "totalTime": "00:00:00",
+            "remarks": "WEEKEND"
+        },
+        {
+            "id": 268018,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-04-24",
+            "dayOfWeek": 5,
+            "scheduledIn": "00:00:00",
+            "checkIn": "10:37:18",
+            "scheduledOut": "00:00:00",
+            "checkOut": "18:20:10",
+            "isLateIn": false,
+            "isEarlyOut": false,
+            "totalTime": "00:00:00",
+            "remarks": "WEEKEND"
+        },
+        {
+            "id": 266059,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-04-23",
+            "dayOfWeek": 4,
+            "scheduledIn": "08:10:00",
+            "checkIn": "11:06:18",
+            "scheduledOut": "16:00:00",
+            "checkOut": "20:28:43",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "09:22:25",
+            "remarks": "LATE: Y, EARLY: N"
+        },
+        {
+            "id": 264221,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-04-22",
+            "dayOfWeek": 3,
+            "scheduledIn": "08:10:00",
+            "checkIn": "10:27:16",
+            "scheduledOut": "16:00:00",
+            "checkOut": "19:12:16",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "08:45:00",
+            "remarks": "LATE: Y, EARLY: N"
+        },
+        {
+            "id": 262396,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-04-21",
+            "dayOfWeek": 2,
+            "scheduledIn": "08:10:00",
+            "checkIn": "10:51:09",
+            "scheduledOut": "16:00:00",
+            "checkOut": "18:29:04",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "07:37:55",
+            "remarks": "LATE: Y, EARLY: N"
+        },
+        {
+            "id": 260468,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-04-20",
+            "dayOfWeek": 1,
+            "scheduledIn": "08:10:00",
+            "checkIn": "10:52:49",
+            "scheduledOut": "16:00:00",
+            "checkOut": "18:51:05",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "07:58:16",
+            "remarks": "LATE: Y, EARLY: N"
+        },
+        {
+            "id": 258535,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-04-19",
+            "dayOfWeek": 7,
+            "scheduledIn": "08:10:00",
+            "checkIn": "10:12:25",
+            "scheduledOut": "16:00:00",
+            "checkOut": "18:36:44",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "08:24:19",
+            "remarks": "LATE: Y, EARLY: N"
+        },
+        {
+            "id": 256655,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "date": "2025-04-18",
+            "dayOfWeek": 6,
+            "scheduledIn": "00:00:00",
+            "scheduledOut": "00:00:00",
+            "isLateIn": false,
+            "isEarlyOut": false,
+            "totalTime": "00:00:00",
+            "remarks": "WEEKEND"
+        },
+        {
+            "id": 254813,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-04-17",
+            "dayOfWeek": 5,
+            "scheduledIn": "00:00:00",
+            "checkIn": "06:55:07",
+            "scheduledOut": "00:00:00",
+            "checkOut": "17:11:33",
+            "isLateIn": false,
+            "isEarlyOut": false,
+            "totalTime": "00:00:00",
+            "remarks": "WEEKEND"
+        },
+        {
+            "id": 243915,
+            "employeeInfo": {
+                "id": 126924,
+                "employeeId": "710003676",
+                "fullName": "Md. Shakil Khan",
+                "active": true
+            },
+            "attendanceScheduleTemplate": {
+                "id": 864,
+                "code": "Ad-4",
+                "name": "8:10:00 AM - 04:00:00 PM",
+                "active": true
+            },
+            "employeeAttendanceType": {
+                "id": 2,
+                "code": "device",
+                "name": "Bio-metric",
+                "active": true
+            },
+            "date": "2025-04-16",
+            "dayOfWeek": 4,
+            "scheduledIn": "08:10:00",
+            "checkIn": "10:52:44",
+            "scheduledOut": "16:00:00",
+            "checkOut": "18:58:41",
+            "isLateIn": true,
+            "isEarlyOut": false,
+            "totalTime": "08:05:57",
+            "remarks": "LATE: Y, EARLY: N"
+        }
+    ],
+    "pageable": {
+        "sort": {
+            "empty": false,
+            "sorted": true,
+            "unsorted": false
+        },
+        "offset": 0,
+        "pageNumber": 0,
+        "pageSize": 30,
+        "paged": true,
+        "unpaged": false
+    },
+    "totalPages": 1,
+    "totalElements": 30,
+    "last": true,
+    "size": 30,
+    "number": 0,
+    "sort": {
+        "empty": false,
+        "sorted": true,
+        "unsorted": false
+    },
+    "numberOfElements": 30,
+    "first": true,
+    "empty": false
+}
