@@ -14,10 +14,12 @@ import { Table, TR, TH, TD } from "@ag-media/react-pdf-table";
 // Styles
 const styles = StyleSheet.create({
     page: {
-        paddingHorizontal: 40,
-        paddingVertical: 70,
+        paddingHorizontal: 26,
+        paddingVertical: 50,
         fontSize: 7,
         fontFamily: "Helvetica",
+        // fontWeight: 100,
+        lineHeight: 1.2,
     },
     header: {
         flexDirection: "row",
@@ -25,13 +27,8 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         width: "100%",
     },
-    section: {
-        // marginBottom: 5,
-        fontSize: 7,
-        borderWidth: 1,
-    },
     by: {
-        fontSize: 5,
+        fontSize: 6,
         color: "gray",
     },
     bold: {
@@ -40,16 +37,9 @@ const styles = StyleSheet.create({
     center: {
         textAlign: "center",
         fontWeight: "bold",
-        marginVertical: 4,
-        fontSize: 9,
-        marginTop: 10,
-    },
-    tableHeader: {
-        flexDirection: "row",
-        borderBottomWidth: 1,
-        borderTopWidth: 1,
-        borderLeftWidth: 1,
-        borderRightWidth: 1,
+        marginVertical: 7,
+        fontSize: 10.5,
+        marginTop: 8,
     },
     row: {
         flexDirection: "row",
@@ -69,7 +59,7 @@ const styles = StyleSheet.create({
     },
     footer: {
         position: "absolute",
-        bottom: 70,
+        bottom: 60,
         right: 70,
         flexDirection: "row",
         justifyContent: "flex-end",
@@ -84,22 +74,22 @@ const styles = StyleSheet.create({
         balance: "16%",
     },
     image: {
-        width: 90,
-        height: 25,
+        width: 95,
+        height: 32,
     },
 });
 
 const PageWrapper = ({ children }) => {
-    const branchName = "DAULATGONJ CUMILLA";
-    const branchAddress = "13136 - DAULATGONJ CUMILLA CUMILLA";
+    const branchName = "Daulatgonj Branch, Cumilla";
+    const branchAddress = "13136 - Daulatgonj Branch, Cumilla .";
     const userInfo = {
         name: "MD KABIR KHAN",
         address: ["VILL- RAMPUR,", "POST-UTTARDA,", "LAKSAM,", "COMILLA"],
         openingDate: "07-Aug-2018",
-        accountNumber: "13124551542415",
+        accountNumber: "1313601016892",
         interest: "2.5",
         accountType: "SB - Savings Bank Account (General)",
-        period: "01-Jul-2024 - 31-Dec-2024",
+        period: "01-Jun-2024 - 14-Jun-2025",
         status: "Active",
         routing: "200191548",
     };
@@ -126,15 +116,15 @@ const PageWrapper = ({ children }) => {
                                     <View style={{ gap: 6 }}>
                                         <Text>
                                             <Text style={styles.bold}>
-                                                Print Date:{" "}
+                                                Print Date{" "}
                                             </Text>{" "}
-                                            01-Jul-2024
+                                            15-Jun-2025
                                         </Text>
                                         <Text>
                                             <Text style={styles.bold}>
-                                                Print Time:{" "}
+                                                Print Time{"  "}
                                             </Text>
-                                            11:09 AM
+                                            1:36 PM
                                         </Text>
                                         <Text>
                                             <Text style={styles.bold}>
@@ -294,7 +284,7 @@ const PageWrapper = ({ children }) => {
                                         </TD>
                                         <TD
                                             style={{
-                                                paddingHorizontal: 1,
+                                                paddingHorizontal: 2,
                                                 paddingVertical: 3,
                                             }}
                                         >
@@ -302,7 +292,7 @@ const PageWrapper = ({ children }) => {
                                         </TD>
                                         <TD
                                             style={{
-                                                paddingHorizontal: 1,
+                                                paddingHorizontal: 2,
                                                 paddingVertical: 3,
                                             }}
                                         >
@@ -331,7 +321,7 @@ const PageWrapper = ({ children }) => {
                                                 justifyContent: "flex-end",
                                                 paddingHorizontal: 1,
                                                 paddingVertical: 3,
-                                                paddingLeft: 3,
+                                                paddingLeft: 6,
                                             }}
                                         >
                                             Balance
@@ -356,14 +346,15 @@ const PageWrapper = ({ children }) => {
                                         ></TD>
                                         <TD
                                             style={{
-                                                paddingHorizontal: 1,
+                                                paddingHorizontal: 2,
                                                 paddingVertical: 4,
                                                 borderBottom: 0,
                                             }}
                                         ></TD>
                                         <TD
                                             style={{
-                                                paddingHorizontal: 1,
+                                                paddingLeft: 1,
+                                                paddingRight: 3,
                                                 paddingTop: 3,
                                                 paddingBottom: 6,
                                                 fontWeight: "bold",
@@ -393,7 +384,7 @@ const PageWrapper = ({ children }) => {
                                                 justifyContent: "flex-end",
                                                 alignItems: "flex-start",
                                                 paddingHorizontal: 1,
-                                                paddingRight: 3,
+                                                paddingRight: 6,
                                                 paddingVertical: 3,
                                                 borderBottom: 0,
                                             }}
@@ -401,16 +392,29 @@ const PageWrapper = ({ children }) => {
                                             <View
                                                 style={{
                                                     flexDirection: "row",
-                                                    alignItems: "center",
+                                                    alignItems: "center", // Changed from baseline to center
+                                                    justifyContent: "center",
                                                 }}
                                             >
                                                 <Text style={styles.bold}>
-                                                    65000.00
+                                                    16,27,889.56{" "}
                                                 </Text>
-                                                <Text style={{ fontSize: 5 }}>
-                                                    {" "}
-                                                    CR
-                                                </Text>
+                                                <View
+                                                    style={{
+                                                        justifyContent:
+                                                            "center",
+                                                        alignItems: "center",
+                                                    }}
+                                                >
+                                                    <Text
+                                                        style={{
+                                                            fontSize: 4.5, // Increased from 4
+                                                            lineHeight: 0, // Match font size
+                                                        }}
+                                                    >
+                                                        CR
+                                                    </Text>
+                                                </View>
                                             </View>
                                         </TD>
                                     </TR>
@@ -428,20 +432,6 @@ const PageWrapper = ({ children }) => {
 };
 
 const StatementPDF = ({ data = [] }) => {
-    const branchName = "DAULATGONJ CUMILLA";
-    const branchAddress = "13136 - DAULATGONJ CUMILLA CUMILLA";
-    const userInfo = {
-        name: "MD KABIR KHAN",
-        address: ["VILL- RAMPUR,", "POST-UTTARDA,", "LAKSAM,", "COMILLA"],
-        openingDate: "07-Aug-2018",
-        accountNumber: "13124551542415",
-        interest: "2.5",
-        accountType: "SB - Savings Bank Account (General)",
-        period: "01-Jul-2024 - 31-Dec-2024",
-        status: "Active",
-        routing: "200191548",
-    };
-
     const totalDebit = data.reduce(
         (sum, d) => sum + parseFloat(d.debit || 0),
         0
@@ -463,7 +453,7 @@ const StatementPDF = ({ data = [] }) => {
                 const pageData = data.slice(start, end);
 
                 return (
-                    <Page key={pageIndex} size="A4" style={styles.page}>
+                    <Page key={pageIndex} size="LETTER" style={styles.page}>
                         <PageWrapper>
                             <Table>
                                 <TR>
@@ -474,116 +464,143 @@ const StatementPDF = ({ data = [] }) => {
                                                 1.45, 2,
                                             ]}
                                         >
-                                            {pageData.map((item, index) => (
-                                                <TR key={index}>
-                                                    <TD
-                                                        style={{
-                                                            justifyContent:
-                                                                "center",
-                                                            alignItems:
-                                                                "flex-start",
-                                                            paddingHorizontal: 1,
-                                                            paddingVertical: 4,
-                                                        }}
-                                                    >
-                                                        {item.date}
-                                                    </TD>
-                                                    <TD
-                                                        style={{
-                                                            justifyContent:
-                                                                "center",
-                                                            alignItems:
-                                                                "flex-start",
-                                                            paddingHorizontal: 1,
-                                                            paddingVertical: 4,
-                                                        }}
-                                                    >
-                                                        {item.valueDate}
-                                                    </TD>
-                                                    <TD
-                                                        style={{
-                                                            paddingHorizontal: 1,
-                                                            paddingVertical: 4,
-                                                        }}
-                                                    >
-                                                        {item.originatingBranch}
-                                                    </TD>
-                                                    <TD
-                                                        style={{
-                                                            paddingHorizontal: 1,
-                                                            paddingVertical: 0,
-                                                        }}
-                                                    >
-                                                        {item.transaction}
-                                                    </TD>
-                                                    <TD
-                                                        style={{
-                                                            justifyContent:
-                                                                "flex-end",
-                                                            alignItems:
-                                                                "flex-start",
-                                                            paddingHorizontal: 1,
-                                                            paddingVertical: 4,
-                                                        }}
-                                                    >
-                                                        {item.debit
-                                                            ? Number(
-                                                                  item.debit
-                                                              ).toFixed(2)
-                                                            : ""}
-                                                    </TD>
-                                                    <TD
-                                                        style={{
-                                                            justifyContent:
-                                                                "flex-end",
-                                                            alignItems:
-                                                                "flex-start",
-                                                            paddingHorizontal: 1,
-                                                            paddingVertical: 4,
-                                                        }}
-                                                    >
-                                                        {item.credit
-                                                            ? Number(
-                                                                  item.credit
-                                                              ).toFixed(2)
-                                                            : ""}
-                                                    </TD>
-                                                    <TD
-                                                        style={{
-                                                            justifyContent:
-                                                                "flex-end",
-                                                            alignItems:
-                                                                "flex-start",
-                                                            paddingHorizontal: 1,
-                                                            paddingRight: 3,
-                                                            paddingVertical: 4,
-                                                        }}
-                                                    >
-                                                        <View
+                                            {pageData.map((item, index) => {
+                                                const debit = item.debit
+                                                    ? Number(
+                                                          item.debit.replace(
+                                                              /,/g,
+                                                              ""
+                                                          )
+                                                      )
+                                                    : "";
+                                                const credit = item.credit
+                                                    ? Number(
+                                                          item.credit.replace(
+                                                              /,/g,
+                                                              ""
+                                                          )
+                                                      )
+                                                    : "";
+                                                const balance = item.balance
+                                                    ? Number(
+                                                          item.balance.replace(
+                                                              /,/g,
+                                                              ""
+                                                          )
+                                                      )
+                                                    : "";
+                                                return (
+                                                    <TR key={index}>
+                                                        <TD
                                                             style={{
-                                                                flexDirection:
-                                                                    "row",
-                                                                alignItems:
+                                                                justifyContent:
                                                                     "center",
+                                                                alignItems:
+                                                                    "flex-start",
+                                                                paddingHorizontal: 1,
+                                                                paddingVertical: 4,
                                                             }}
                                                         >
-                                                            <Text>
-                                                                {Number(
-                                                                    item.balance
-                                                                ).toFixed(2)}
-                                                            </Text>
-                                                            <Text
+                                                            {item.date}
+                                                        </TD>
+                                                        <TD
+                                                            style={{
+                                                                justifyContent:
+                                                                    "center",
+                                                                alignItems:
+                                                                    "flex-start",
+                                                                paddingHorizontal: 1,
+                                                                paddingVertical: 4,
+                                                            }}
+                                                        >
+                                                            {item.valueDate}
+                                                        </TD>
+                                                        <TD
+                                                            style={{
+                                                                paddingHorizontal: 2,
+                                                                paddingVertical: 4,
+                                                            }}
+                                                        >
+                                                            {
+                                                                item.originatingBranch
+                                                            }
+                                                        </TD>
+                                                        <TD
+                                                            style={{
+                                                                paddingHorizontal: 2,
+                                                                paddingVertical: 0,
+                                                            }}
+                                                        >
+                                                            {item.transaction}
+                                                        </TD>
+                                                        <TD
+                                                            style={{
+                                                                justifyContent:
+                                                                    "flex-end",
+                                                                alignItems:
+                                                                    "flex-start",
+                                                                paddingHorizontal: 1,
+                                                                paddingVertical: 4,
+                                                            }}
+                                                        >
+                                                            {debit}
+                                                        </TD>
+                                                        <TD
+                                                            style={{
+                                                                justifyContent:
+                                                                    "flex-end",
+                                                                alignItems:
+                                                                    "flex-start",
+                                                                paddingHorizontal: 1,
+                                                                paddingVertical: 4,
+                                                            }}
+                                                        >
+                                                            {credit}
+                                                        </TD>
+                                                        <TD
+                                                            style={{
+                                                                justifyContent:
+                                                                    "flex-end",
+                                                                alignItems:
+                                                                    "flex-start",
+                                                                paddingHorizontal: 1,
+                                                                paddingRight: 6,
+                                                                paddingVertical: 4,
+                                                            }}
+                                                        >
+                                                            <View
                                                                 style={{
-                                                                    fontSize: 5,
+                                                                    flexDirection:
+                                                                        "row",
+                                                                    alignItems:
+                                                                        "center",
                                                                 }}
                                                             >
-                                                                {" "}
-                                                                CR
-                                                            </Text>
-                                                        </View>
-                                                    </TD>
-                                                </TR>
-                                            ))}
+                                                                <Text>
+                                                                    {balance}{" "}
+                                                                </Text>
+                                                                <View
+                                                                    style={{
+                                                                        justifyContent:
+                                                                            "center",
+                                                                        alignItems:
+                                                                            "center",
+                                                                    }}
+                                                                >
+                                                                    <Text
+                                                                        style={{
+                                                                            fontSize: 4.5, // Increased from 4
+                                                                            lineHeight: 0, // Match font size
+                                                                        }}
+                                                                    >
+                                                                        CR
+                                                                    </Text>
+                                                                </View>
+                                                            </View>
+                                                        </TD>
+                                                    </TR>
+                                                );
+                                            })}
                                         </Table>
                                     </TD>
                                 </TR>
@@ -664,7 +681,7 @@ const StatementPDF = ({ data = [] }) => {
                                                                 "flex-end",
                                                             paddingHorizontal: 1,
                                                             paddingVertical: 3,
-                                                            paddingLeft: 3,
+                                                            paddingLeft: 6,
                                                         }}
                                                     ></TD>
                                                 </TH>
@@ -742,7 +759,7 @@ const StatementPDF = ({ data = [] }) => {
                                                             alignItems:
                                                                 "center",
                                                             paddingHorizontal: 1,
-                                                            paddingRight: 3,
+                                                            paddingRight: 6,
                                                             paddingVertical: 4,
                                                         }}
                                                     >
@@ -763,14 +780,24 @@ const StatementPDF = ({ data = [] }) => {
                                                                     5642.05
                                                                 ).toFixed(2)}
                                                             </Text>
-                                                            <Text
+                                                            <View
                                                                 style={{
-                                                                    fontSize: 5,
+                                                                    justifyContent:
+                                                                        "center",
+                                                                    alignItems:
+                                                                        "center",
                                                                 }}
                                                             >
-                                                                {" "}
-                                                                CR
-                                                            </Text>
+                                                                <Text
+                                                                    style={{
+                                                                        fontSize: 4.5, // Increased from 4
+                                                                        lineHeight: 0, // Match font size
+                                                                    }}
+                                                                >
+                                                                    {" "}
+                                                                    CR
+                                                                </Text>
+                                                            </View>
                                                         </View>
                                                     </TD>
                                                 </TH>
@@ -852,7 +879,7 @@ const StatementPDF = ({ data = [] }) => {
                                                             alignItems:
                                                                 "center",
                                                             paddingHorizontal: 1,
-                                                            paddingRight: 3,
+                                                            paddingRight: 6,
                                                             paddingVertical: 4,
                                                             paddingBottom: 25,
                                                         }}
@@ -874,14 +901,24 @@ const StatementPDF = ({ data = [] }) => {
                                                                     5642.05
                                                                 ).toFixed(2)}
                                                             </Text>
-                                                            <Text
+                                                            <View
                                                                 style={{
-                                                                    fontSize: 5,
+                                                                    justifyContent:
+                                                                        "center",
+                                                                    alignItems:
+                                                                        "center",
                                                                 }}
                                                             >
-                                                                {" "}
-                                                                CR
-                                                            </Text>
+                                                                <Text
+                                                                    style={{
+                                                                        fontSize: 4.5, // Increased from 4
+                                                                        lineHeight: 0, // Match font size
+                                                                    }}
+                                                                >
+                                                                    {" "}
+                                                                    CR
+                                                                </Text>
+                                                            </View>
                                                         </View>
                                                     </TD>
                                                 </TH>
@@ -961,7 +998,7 @@ const StatementPDF = ({ data = [] }) => {
                                             style={{
                                                 justifyContent: "flex-end",
                                                 paddingHorizontal: 1,
-                                                paddingLeft: 3,
+                                                paddingLeft: 6,
                                             }}
                                         ></TD>
                                     </TH>
