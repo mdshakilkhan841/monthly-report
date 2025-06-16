@@ -409,7 +409,7 @@ const PdfViewerPage = () => {
         {
             date: "18-Sep-2024",
             valueDate: "18-Sep-2024",
-            originatingBranch: "Parahuram Branch, Forti",
+            originatingBranch: "Parahuram Branch, Feni",
             transaction: "Cash Withdrawal INST NUM SB1313867379",
             debit: "10,000.00",
             credit: "",

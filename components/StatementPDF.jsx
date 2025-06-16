@@ -347,8 +347,8 @@ const StatementPDF = ({ data = [] }) => {
     return (
         <Document>
             {Array.from({ length: totalPages }).map((_, pageIndex) => {
-                const start = pageIndex * pageSize;
-                const end = start + pageSize;
+                const start = pageIndex * (pageIndex === 3 ? 21 : pageSize);
+                const end = start + (pageIndex === 2 ? 19 : pageSize);
                 const pageData = data.slice(start, end);
                 const cumulativeData = data.slice(0, end);
                 const totalDebit = cumulativeData.reduce(
