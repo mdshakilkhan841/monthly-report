@@ -87,7 +87,7 @@ const PageWrapper = ({ children }) => {
         address: ["VILL- RAMPUR,", "POST-UTTARDA,", "LAKSAM,", "COMILLA"],
         openingDate: "07-Aug-2018",
         accountNumber: "1313601016892",
-        interest: "2.5",
+        interest: "2.75",
         accountType: "SB - Savings Bank Account (General)",
         period: "01-Jun-2024 - 14-Jun-2025",
         status: "Active",
@@ -260,7 +260,7 @@ const PageWrapper = ({ children }) => {
                             <TD>
                                 <Table
                                     weightings={[
-                                        1.25, 1.25, 2.5, 3.5, 1.45, 1.45, 2,
+                                        1.25, 1.25, 3.5, 3.7, 1.45, 1.45, 2,
                                     ]}
                                 >
                                     <TH>
@@ -327,97 +327,6 @@ const PageWrapper = ({ children }) => {
                                             Balance
                                         </TD>
                                     </TH>
-                                    <TR>
-                                        <TD
-                                            style={{
-                                                justifyContent: "center",
-                                                paddingHorizontal: 1,
-                                                paddingVertical: 4,
-                                                borderBottom: 0,
-                                            }}
-                                        ></TD>
-                                        <TD
-                                            style={{
-                                                justifyContent: "center",
-                                                paddingHorizontal: 1,
-                                                paddingVertical: 4,
-                                                borderBottom: 0,
-                                            }}
-                                        ></TD>
-                                        <TD
-                                            style={{
-                                                paddingHorizontal: 2,
-                                                paddingVertical: 4,
-                                                borderBottom: 0,
-                                            }}
-                                        ></TD>
-                                        <TD
-                                            style={{
-                                                paddingLeft: 1,
-                                                paddingRight: 3,
-                                                paddingTop: 3,
-                                                paddingBottom: 6,
-                                                fontWeight: "bold",
-                                                borderBottom: 0,
-                                            }}
-                                        >
-                                            Opening Balance
-                                        </TD>
-                                        <TD
-                                            style={{
-                                                justifyContent: "flex-end",
-                                                paddingHorizontal: 1,
-                                                paddingVertical: 4,
-                                                borderBottom: 0,
-                                            }}
-                                        ></TD>
-                                        <TD
-                                            style={{
-                                                justifyContent: "flex-end",
-                                                paddingHorizontal: 1,
-                                                paddingVertical: 4,
-                                                borderBottom: 0,
-                                            }}
-                                        ></TD>
-                                        <TD
-                                            style={{
-                                                justifyContent: "flex-end",
-                                                alignItems: "flex-start",
-                                                paddingHorizontal: 1,
-                                                paddingRight: 6,
-                                                paddingVertical: 3,
-                                                borderBottom: 0,
-                                            }}
-                                        >
-                                            <View
-                                                style={{
-                                                    flexDirection: "row",
-                                                    alignItems: "center", // Changed from baseline to center
-                                                    justifyContent: "center",
-                                                }}
-                                            >
-                                                <Text style={styles.bold}>
-                                                    16,27,889.56{" "}
-                                                </Text>
-                                                <View
-                                                    style={{
-                                                        justifyContent:
-                                                            "center",
-                                                        alignItems: "center",
-                                                    }}
-                                                >
-                                                    <Text
-                                                        style={{
-                                                            fontSize: 4.5, // Increased from 4
-                                                            lineHeight: 0, // Match font size
-                                                        }}
-                                                    >
-                                                        CR
-                                                    </Text>
-                                                </View>
-                                            </View>
-                                        </TD>
-                                    </TR>
                                 </Table>
                             </TD>
                         </TR>
@@ -432,18 +341,8 @@ const PageWrapper = ({ children }) => {
 };
 
 const StatementPDF = ({ data = [] }) => {
-    const totalDebit = data.reduce(
-        (sum, d) => sum + parseFloat(d.debit || 0),
-        0
-    );
-    const totalCredit = data.reduce(
-        (sum, d) => sum + parseFloat(d.credit || 0),
-        0
-    );
-
     const pageSize = 22;
     const totalPages = Math.ceil(data.length / pageSize);
-    console.log("🚀 ~ totalPages:", totalPages);
 
     return (
         <Document>
@@ -451,16 +350,151 @@ const StatementPDF = ({ data = [] }) => {
                 const start = pageIndex * pageSize;
                 const end = start + pageSize;
                 const pageData = data.slice(start, end);
+                const cumulativeData = data.slice(0, end);
+                const totalDebit = cumulativeData.reduce(
+                    (sum, row) =>
+                        sum + Number(row.debit.replace(/,/g, "") || 0),
+                    0
+                );
+                const totalCredit = cumulativeData.reduce(
+                    (sum, row) =>
+                        sum + Number(row.credit.replace(/,/g, "") || 0),
+                    0
+                );
+                const lastTransaction = pageData[pageData.length - 1];
+
+                const balanceBF = data[start - 1]?.balance;
+                console.log("🚀 ~ {Array.from ~ balanceBF:", balanceBF);
 
                 return (
                     <Page key={pageIndex} size="LETTER" style={styles.page}>
                         <PageWrapper>
                             <Table>
                                 <TR>
+                                    <TD style={{ borderTop: 0 }}>
+                                        <Table
+                                            weightings={[
+                                                1.25, 1.25, 3.5, 3.7, 1.45,
+                                                1.45, 2,
+                                            ]}
+                                        >
+                                            <TR>
+                                                <TD
+                                                    style={{
+                                                        justifyContent:
+                                                            "center",
+                                                        paddingHorizontal: 1,
+                                                        paddingVertical: 4,
+                                                        borderTop: 0,
+                                                    }}
+                                                ></TD>
+                                                <TD
+                                                    style={{
+                                                        justifyContent:
+                                                            "center",
+                                                        paddingHorizontal: 1,
+                                                        paddingVertical: 4,
+                                                        borderTop: 0,
+                                                    }}
+                                                ></TD>
+                                                <TD
+                                                    style={{
+                                                        paddingHorizontal: 2,
+                                                        paddingVertical: 4,
+                                                        borderTop: 0,
+                                                    }}
+                                                ></TD>
+                                                <TD
+                                                    style={{
+                                                        paddingLeft: 1,
+                                                        paddingRight: 3,
+                                                        marginTop: 5,
+                                                        paddingBottom: 3,
+                                                        fontWeight: "bold",
+                                                        borderTop: 0,
+                                                    }}
+                                                >
+                                                    {pageIndex === 0
+                                                        ? "Opening Balance"
+                                                        : "Balance B/F"}{" "}
+                                                </TD>
+                                                <TD
+                                                    style={{
+                                                        justifyContent:
+                                                            "flex-end",
+                                                        paddingHorizontal: 1,
+                                                        paddingVertical: 4,
+                                                        borderTop: 0,
+                                                    }}
+                                                ></TD>
+                                                <TD
+                                                    style={{
+                                                        justifyContent:
+                                                            "flex-end",
+                                                        paddingHorizontal: 1,
+                                                        paddingVertical: 4,
+                                                        borderTop: 0,
+                                                    }}
+                                                ></TD>
+                                                <TD
+                                                    style={{
+                                                        justifyContent:
+                                                            "flex-end",
+                                                        alignItems:
+                                                            "flex-start",
+                                                        paddingHorizontal: 1,
+                                                        paddingRight: 6,
+                                                        paddingVertical: 3,
+                                                        borderTop: 0,
+                                                        marginTop: 2,
+                                                        paddingBottom: 3,
+                                                    }}
+                                                >
+                                                    <View
+                                                        style={{
+                                                            flexDirection:
+                                                                "row",
+                                                            alignItems:
+                                                                "center", // Changed from baseline to center
+                                                            justifyContent:
+                                                                "center",
+                                                        }}
+                                                    >
+                                                        <Text
+                                                            style={styles.bold}
+                                                        >
+                                                            {pageIndex === 0
+                                                                ? "16,27,889.56"
+                                                                : balanceBF}{" "}
+                                                        </Text>
+                                                        <View
+                                                            style={{
+                                                                justifyContent:
+                                                                    "center",
+                                                                alignItems:
+                                                                    "center",
+                                                            }}
+                                                        >
+                                                            <Text
+                                                                style={{
+                                                                    fontSize: 4.5, // Increased from 4
+                                                                    lineHeight: 0, // Match font size
+                                                                }}
+                                                            >
+                                                                CR
+                                                            </Text>
+                                                        </View>
+                                                    </View>
+                                                </TD>
+                                            </TR>
+                                        </Table>
+                                    </TD>
+                                </TR>
+                                <TR>
                                     <TD>
                                         <Table
                                             weightings={[
-                                                1.25, 1.25, 2.5, 3.5, 1.45,
+                                                1.25, 1.25, 3.5, 3.7, 1.45,
                                                 1.45, 2,
                                             ]}
                                         >
@@ -471,6 +505,12 @@ const StatementPDF = ({ data = [] }) => {
                                                               /,/g,
                                                               ""
                                                           )
+                                                      ).toLocaleString(
+                                                          "en-IN",
+                                                          {
+                                                              minimumFractionDigits: 2,
+                                                              maximumFractionDigits: 2,
+                                                          }
                                                       )
                                                     : "";
                                                 const credit = item.credit
@@ -479,6 +519,12 @@ const StatementPDF = ({ data = [] }) => {
                                                               /,/g,
                                                               ""
                                                           )
+                                                      ).toLocaleString(
+                                                          "en-IN",
+                                                          {
+                                                              minimumFractionDigits: 2,
+                                                              maximumFractionDigits: 2,
+                                                          }
                                                       )
                                                     : "";
                                                 const balance = item.balance
@@ -487,6 +533,12 @@ const StatementPDF = ({ data = [] }) => {
                                                               /,/g,
                                                               ""
                                                           )
+                                                      ).toLocaleString(
+                                                          "en-IN",
+                                                          {
+                                                              minimumFractionDigits: 2,
+                                                              maximumFractionDigits: 2,
+                                                          }
                                                       )
                                                     : "";
                                                 return (
@@ -612,7 +664,7 @@ const StatementPDF = ({ data = [] }) => {
                                             <Table
                                                 style={{ border: "0px" }}
                                                 weightings={[
-                                                    1.25, 1.25, 2.5, 3.5, 1.45,
+                                                    1.25, 1.25, 3.5, 3.7, 1.45,
                                                     1.45, 2,
                                                 ]}
                                             >
@@ -661,7 +713,13 @@ const StatementPDF = ({ data = [] }) => {
                                                             paddingVertical: 6,
                                                         }}
                                                     >
-                                                        56264.00
+                                                        {totalDebit.toLocaleString(
+                                                            "en-IN",
+                                                            {
+                                                                minimumFractionDigits: 2,
+                                                                maximumFractionDigits: 2,
+                                                            }
+                                                        )}
                                                     </TD>
                                                     <TD
                                                         style={{
@@ -673,7 +731,13 @@ const StatementPDF = ({ data = [] }) => {
                                                             paddingVertical: 6,
                                                         }}
                                                     >
-                                                        563157.00
+                                                        {totalCredit.toLocaleString(
+                                                            "en-IN",
+                                                            {
+                                                                minimumFractionDigits: 2,
+                                                                maximumFractionDigits: 2,
+                                                            }
+                                                        )}
                                                     </TD>
                                                     <TD
                                                         style={{
@@ -693,7 +757,7 @@ const StatementPDF = ({ data = [] }) => {
                                             <Table
                                                 style={{ border: "0px" }}
                                                 weightings={[
-                                                    1.25, 1.25, 2.5, 3.5, 1.45,
+                                                    1.25, 1.25, 3.5, 3.7, 1.45,
                                                     1.45, 2,
                                                 ]}
                                             >
@@ -777,8 +841,17 @@ const StatementPDF = ({ data = [] }) => {
                                                                 }
                                                             >
                                                                 {Number(
-                                                                    5642.05
-                                                                ).toFixed(2)}
+                                                                    lastTransaction.balance.replace(
+                                                                        /,/g,
+                                                                        ""
+                                                                    )
+                                                                ).toLocaleString(
+                                                                    "en-IN",
+                                                                    {
+                                                                        minimumFractionDigits: 2,
+                                                                        maximumFractionDigits: 2,
+                                                                    }
+                                                                )}
                                                             </Text>
                                                             <View
                                                                 style={{
@@ -815,7 +888,7 @@ const StatementPDF = ({ data = [] }) => {
                                             <Table
                                                 style={{ border: "0px" }}
                                                 weightings={[
-                                                    1.25, 1.25, 2.5, 3.5, 1.45,
+                                                    1.25, 1.25, 3.5, 3.7, 1.45,
                                                     1.45, 2,
                                                 ]}
                                             >
@@ -846,7 +919,7 @@ const StatementPDF = ({ data = [] }) => {
                                                         style={{
                                                             paddingHorizontal: 1,
                                                             paddingVertical: 3,
-                                                            paddingLeft: 62,
+                                                            paddingLeft: 72,
                                                             paddingBottom: 25,
                                                         }}
                                                     >
@@ -898,8 +971,17 @@ const StatementPDF = ({ data = [] }) => {
                                                                 }
                                                             >
                                                                 {Number(
-                                                                    5642.05
-                                                                ).toFixed(2)}
+                                                                    lastTransaction.balance.replace(
+                                                                        /,/g,
+                                                                        ""
+                                                                    )
+                                                                ).toLocaleString(
+                                                                    "en-IN",
+                                                                    {
+                                                                        minimumFractionDigits: 2,
+                                                                        maximumFractionDigits: 2,
+                                                                    }
+                                                                )}
                                                             </Text>
                                                             <View
                                                                 style={{
@@ -946,7 +1028,7 @@ const StatementPDF = ({ data = [] }) => {
                                 <Table
                                     style={{ border: "0px" }}
                                     weightings={[
-                                        1.25, 1.25, 2.5, 3.5, 1.45, 1.45, 2,
+                                        1.25, 1.25, 3.5, 3.7, 1.45, 1.45, 2,
                                     ]}
                                 >
                                     <TH>
@@ -983,7 +1065,13 @@ const StatementPDF = ({ data = [] }) => {
                                                 paddingVertical: 1,
                                             }}
                                         >
-                                            564.00
+                                            {totalDebit.toLocaleString(
+                                                "en-IN",
+                                                {
+                                                    minimumFractionDigits: 2,
+                                                    maximumFractionDigits: 2,
+                                                }
+                                            )}
                                         </TD>
                                         <TD
                                             style={{
@@ -992,7 +1080,13 @@ const StatementPDF = ({ data = [] }) => {
                                                 paddingVertical: 1,
                                             }}
                                         >
-                                            8654.00
+                                            {totalCredit.toLocaleString(
+                                                "en-IN",
+                                                {
+                                                    minimumFractionDigits: 2,
+                                                    maximumFractionDigits: 2,
+                                                }
+                                            )}
                                         </TD>
                                         <TD
                                             style={{
