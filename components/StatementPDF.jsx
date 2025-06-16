@@ -260,7 +260,7 @@ const PageWrapper = ({ children }) => {
                             <TD>
                                 <Table
                                     weightings={[
-                                        1.25, 1.25, 3.5, 3.7, 1.45, 1.45, 2,
+                                        1.25, 1.25, 3.5, 3.5, 1.45, 1.45, 2,
                                     ]}
                                 >
                                     <TH>
@@ -374,7 +374,7 @@ const StatementPDF = ({ data = [] }) => {
                                     <TD style={{ borderTop: 0 }}>
                                         <Table
                                             weightings={[
-                                                1.25, 1.25, 3.5, 3.7, 1.45,
+                                                1.25, 1.25, 3.5, 3.5, 1.45,
                                                 1.45, 2,
                                             ]}
                                         >
@@ -494,7 +494,7 @@ const StatementPDF = ({ data = [] }) => {
                                     <TD>
                                         <Table
                                             weightings={[
-                                                1.25, 1.25, 3.5, 3.7, 1.45,
+                                                1.25, 1.25, 3.5, 3.5, 1.45,
                                                 1.45, 2,
                                             ]}
                                         >
@@ -664,7 +664,7 @@ const StatementPDF = ({ data = [] }) => {
                                             <Table
                                                 style={{ border: "0px" }}
                                                 weightings={[
-                                                    1.25, 1.25, 3.5, 3.7, 1.45,
+                                                    1.25, 1.25, 3.5, 3.5, 1.45,
                                                     1.45, 2,
                                                 ]}
                                             >
@@ -757,7 +757,7 @@ const StatementPDF = ({ data = [] }) => {
                                             <Table
                                                 style={{ border: "0px" }}
                                                 weightings={[
-                                                    1.25, 1.25, 3.5, 3.7, 1.45,
+                                                    1.25, 1.25, 3.5, 3.5, 1.45,
                                                     1.45, 2,
                                                 ]}
                                             >
@@ -888,7 +888,7 @@ const StatementPDF = ({ data = [] }) => {
                                             <Table
                                                 style={{ border: "0px" }}
                                                 weightings={[
-                                                    1.25, 1.25, 3.5, 3.7, 1.45,
+                                                    1.25, 1.25, 3.5, 3.5, 1.45,
                                                     1.45, 2,
                                                 ]}
                                             >
@@ -1028,7 +1028,7 @@ const StatementPDF = ({ data = [] }) => {
                                 <Table
                                     style={{ border: "0px" }}
                                     weightings={[
-                                        1.25, 1.25, 3.5, 3.7, 1.45, 1.45, 2,
+                                        1.25, 1.25, 3.5, 3.5, 1.45, 1.45, 2,
                                     ]}
                                 >
                                     <TH>

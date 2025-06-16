@@ -668,7 +668,7 @@ const PdfViewerPage = () => {
             valueDate: "28-Jan-2025",
             originatingBranch: "",
             transaction:
-                "RTGS - THE CITY BANK LTD. Transfe RTH : CBIA2501283451427 BIC : GIBLBDDH",
+                "RTGS - THE CITY BANK LTD. Transfe UTR : CBIA2501283451427 BIC : GIBLBDDH",
             debit: "",
             credit: "9,00,000.00",
             balance: "9,04,867.48",
@@ -789,7 +789,7 @@ const PdfViewerPage = () => {
         {
             date: "30-Apr-2025",
             valueDate: "30-Apr-2025",
-            originatingBranch: "Guihuma Bazar Branch, Feni",
+            originatingBranch: "Guthuma Bazar Branch, Feni",
             transaction: "BEFTN INST NUM 131367440311",
             debit: "21,000.00",
             credit: "",
@@ -818,7 +818,7 @@ const PdfViewerPage = () => {
         {
             date: "20-May-2025",
             valueDate: "20-May-2025",
-            originatingBranch: "Guihuma Bazar Branch, Feni",
+            originatingBranch: "Guthuma Bazar Branch, Feni",
             transaction: "TR- BEFTN INST NUM 131368492294",
             debit: "20,000.00",
             credit: "",
