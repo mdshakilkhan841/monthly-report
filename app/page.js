@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
+import * as XLSX from "xlsx-js-style";
 
 const Home = () => {
     // UI state
@@ -332,6 +333,318 @@ const Home = () => {
         });
     }, [attendanceData, fromDate, toDate]);
 
+    const exportToExcel = () => {
+        try {
+            const wb = XLSX.utils.book_new();
+
+            // === Color Palette
+            const weekExcelColors = [
+                "FFF1F2",
+                "ECFDF5",
+                "EEF2FF",
+                "FEFCE8",
+                "EFF6FF",
+                "FFF7ED",
+                "F0FDFA",
+                "F7FEE7",
+                "FAF5FF",
+                "FDF2F8",
+            ];
+            const taskExcelColors = [
+                "FEF9C3",
+                "D1FAE5",
+                "FCE7F3",
+                "CFFAFE",
+                "ECFCCB",
+                "E0E7FF",
+                "FAE8FF",
+                "FFEDD5",
+                "CCFBF1",
+                "FEF08A",
+            ];
+
+            const lightGray = "e5e7eb";
+            const lightYellow = "FEF9C3";
+            const lightGreen = "D1FAE5";
+
+            const allBorders = () => ({
+                top: { style: "thin", color: { rgb: "000000" } },
+                bottom: { style: "thin", color: { rgb: "000000" } },
+                left: { style: "thin", color: { rgb: "000000" } },
+                right: { style: "thin", color: { rgb: "000000" } },
+            });
+
+            const headerStyle = {
+                font: { bold: true },
+                fill: { patternType: "solid", fgColor: { rgb: lightGray } },
+                alignment: { horizontal: "center" },
+                border: allBorders(),
+            };
+
+            const data = [["Employee Weekly Summary"]];
+
+            // === Headers
+            const baseHeaders = [
+                "Employee ID",
+                "Name",
+                "Designation",
+                "Department",
+                "Week",
+                "Daily Hours",
+                "Weekly Hours",
+            ];
+            const taskHeaders = [];
+
+            for (let i = 0; i < maxTasksCount; i++) {
+                taskHeaders.push(
+                    `Task ${i + 1}`,
+                    "Frequency",
+                    "Time Required",
+                    "Total Time"
+                );
+            }
+
+            const headerRow = [...baseHeaders, ...taskHeaders, "Add Task"];
+            data.push(headerRow);
+
+            // === Weekly Rows
+            weeks.forEach((week, rowIndex) => {
+                const row = [
+                    rowIndex === 0 ? employee.employeeId : "",
+                    rowIndex === 0 ? employee.fullName : "",
+                    rowIndex === 0 ? employee.designation : "",
+                    rowIndex === 0 ? employee.department : "",
+                    week.week,
+                    weekTasks[rowIndex]?.[0]?.dailyHours || 8,
+                    (weekTasks[rowIndex]?.[0]?.dailyHours || 8) * week.workDays,
+                ];
+
+                weekTasks[rowIndex].forEach((task) => {
+                    row.push(
+                        task.name,
+                        task.frequency,
+                        task.timeRequired,
+                        (task.frequency * task.timeRequired).toFixed(1)
+                    );
+                });
+
+                const emptySlots = maxTasksCount - weekTasks[rowIndex].length;
+                for (let i = 0; i < emptySlots; i++) {
+                    row.push("", "", "", "");
+                }
+
+                row.push("");
+                data.push(row);
+            });
+
+            data.push([""]);
+            data.push(["Week Details"]);
+            const weekDetailsHeader = [
+                "Week",
+                "Date Range",
+                "Work Days",
+                "Weekly Task Hours",
+            ];
+            data.push(weekDetailsHeader);
+
+            const weekDetailStart = data.length;
+
+            weeks.forEach((week, i) => {
+                const weekTotal = (weekTasks[i] ?? [])
+                    .reduce(
+                        (sum, task) =>
+                            sum +
+                            (Number(task.frequency) *
+                                Number(task.timeRequired) || 0),
+                        0
+                    )
+                    .toFixed(1);
+
+                data.push([
+                    week.week,
+                    week.dateRange,
+                    week.workDays,
+                    weekTotal,
+                ]);
+            });
+
+            // Total Row
+            const totalWorkDays = weeks.reduce((sum, w) => sum + w.workDays, 0);
+            const totalHours = weekTasks.reduce(
+                (sum, tasks) =>
+                    sum +
+                    tasks.reduce(
+                        (tSum, task) =>
+                            tSum +
+                            (Number(task.frequency) *
+                                Number(task.timeRequired) || 0),
+                        0
+                    ),
+                0
+            );
+            data.push(["Total", "", totalWorkDays, totalHours.toFixed(1)]);
+
+            // Average Row
+            data.push([
+                "Average Hours/Day",
+                "",
+                "",
+                totalWorkDays > 0
+                    ? (totalHours / totalWorkDays).toFixed(2)
+                    : "0.00",
+            ]);
+
+            // === Create sheet
+            const ws = XLSX.utils.aoa_to_sheet(data);
+
+            const range = XLSX.utils.decode_range(ws["!ref"]);
+            const summaryStartRow = 2; // Data starts after header
+            const summaryEndRow = summaryStartRow + weeks.length - 1;
+
+            const totalCols = headerRow.length;
+
+            const tableTitleStyle = {
+                font: { bold: true, sz: 14 },
+            };
+
+            for (let R = range.s.r; R <= range.e.r; R++) {
+                for (let C = 0; C < totalCols; C++) {
+                    const cellRef = XLSX.utils.encode_cell({ r: R, c: C });
+                    if (!ws[cellRef]) continue;
+
+                    const cellVal = data[R]?.[C];
+
+                    // Table titles
+                    if (
+                        data[R]?.[0] === "Employee Weekly Summary" ||
+                        data[R]?.[0] === "Week Details"
+                    ) {
+                        ws[cellRef].s = {
+                            ...ws[cellRef].s,
+                            ...tableTitleStyle,
+                        };
+                        continue;
+                    }
+
+                    // Header row (row 1 is index 1)
+                    if (R === 1) {
+                        // Light gray by default
+                        ws[cellRef].s = {
+                            fill: {
+                                patternType: "solid",
+                                fgColor: { rgb: lightGray },
+                            },
+                            font: { bold: true },
+                            alignment: { horizontal: "center" },
+                            border: allBorders(),
+                        };
+
+                        // Override pastel color for task headers only
+                        const taskOffset = baseHeaders.length;
+                        const relativeTaskIndex = C - taskOffset;
+                        if (
+                            relativeTaskIndex >= 0 &&
+                            relativeTaskIndex < taskHeaders.length
+                        ) {
+                            const taskGroup = Math.floor(relativeTaskIndex / 4);
+                            ws[cellRef].s.fill = {
+                                patternType: "solid",
+                                fgColor: {
+                                    rgb: taskExcelColors[
+                                        taskGroup % taskExcelColors.length
+                                    ],
+                                },
+                            };
+                        }
+
+                        continue;
+                    }
+
+                    // Week-colored rows
+                    if (R >= summaryStartRow && R <= summaryEndRow) {
+                        const weekIdx = R - summaryStartRow;
+                        const bgColor =
+                            weekExcelColors[weekIdx % weekExcelColors.length];
+                        ws[cellRef].s = {
+                            fill: {
+                                patternType: "solid",
+                                fgColor: { rgb: bgColor },
+                            },
+                            border: allBorders(),
+                        };
+                        continue;
+                    }
+
+                    // Week Details: header
+                    if (
+                        data[R]?.[0] === "Week" &&
+                        data[R]?.[1] === "Date Range"
+                    ) {
+                        ws[cellRef].s = headerStyle;
+                        continue;
+                    }
+
+                    // Week Details: "Total" row
+                    if (data[R]?.[0] === "Total") {
+                        ws[cellRef].s = {
+                            fill: {
+                                patternType: "solid",
+                                fgColor: { rgb: lightYellow },
+                            },
+                            font: { bold: true },
+                            border: allBorders(),
+                        };
+                        continue;
+                    }
+
+                    // Week Details: "Average Hours/Day" row
+                    if (data[R]?.[0] === "Average Hours/Day") {
+                        ws[cellRef].s = {
+                            fill: {
+                                patternType: "solid",
+                                fgColor: { rgb: lightGreen },
+                            },
+                            font: { bold: true },
+                            border: allBorders(),
+                        };
+                        continue;
+                    }
+
+                    // Default: just borders
+                    ws[cellRef].s = {
+                        ...ws[cellRef].s,
+                        border: allBorders(),
+                    };
+                }
+            }
+
+            // === Auto Column Widths
+            const maxCols = data.reduce(
+                (max, row) => Math.max(max, row.length),
+                0
+            );
+            const colWidths = Array.from({ length: maxCols }).map((_, i) => {
+                let maxLen = 10;
+                data.forEach((row) => {
+                    const val = row[i];
+                    const len = val ? val.toString().length : 0;
+                    if (len > maxLen) maxLen = len;
+                });
+                return { wch: maxLen + 2 };
+            });
+            ws["!cols"] = colWidths;
+
+            XLSX.utils.book_append_sheet(wb, ws, "Employee Report");
+            XLSX.writeFile(
+                wb,
+                `Employee_Report_${new Date().toISOString().slice(0, 10)}.xlsx`
+            );
+        } catch (error) {
+            console.error("Export error:", error);
+            setError("Failed to export Excel file.");
+        }
+    };
+
     return (
         <div className="container mx-auto p-6">
             <div className="mb-8">
@@ -410,6 +723,13 @@ const Home = () => {
                             : dataSource === "api"
                             ? "Fetch Attendance"
                             : "Load JSON"}
+                    </button>
+                    <button
+                        onClick={exportToExcel}
+                        className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-500 ml-4"
+                        disabled={weeks.length === 0}
+                    >
+                        Export to Excel
                     </button>
                 </div>
                 {error && (
@@ -810,36 +1130,44 @@ const Home = () => {
                                         Average Hours/Day
                                     </td>
                                     <td className="py-2 px-4 border text-center">
-                                        {(() => {
-                                            const totalWorkDays = weeks.reduce(
-                                                (sum, week) =>
-                                                    sum + Number(week.workDays),
-                                                0
-                                            );
-                                            const totalWeeklyHours =
-                                                weekTasks.reduce(
-                                                    (sum, tasks) =>
-                                                        sum +
-                                                        tasks.reduce(
-                                                            (tSum, task) =>
-                                                                tSum +
-                                                                (Number(
-                                                                    task.frequency
-                                                                ) *
-                                                                    Number(
-                                                                        task.timeRequired
-                                                                    ) || 0),
-                                                            0
-                                                        ),
-                                                    0
+                                        {
+                                            // Calculate average daily duration from weeks
+                                            (() => {
+                                                // Sum total seconds and total work days from all weeks
+                                                let totalSeconds = 0;
+                                                let totalWorkDays = 0;
+                                                weeks.forEach((week) => {
+                                                    // Parse actualWeeklyHours: "8h 30m 0s"
+                                                    const [h, m, s] =
+                                                        week.actualWeeklyHours
+                                                            .split(/[hms ]+/)
+                                                            .filter(Boolean)
+                                                            .map(Number);
+                                                    const weekSeconds =
+                                                        (h || 0) * 3600 +
+                                                        (m || 0) * 60 +
+                                                        (s || 0);
+                                                    totalSeconds += weekSeconds;
+                                                    totalWorkDays +=
+                                                        week.workDays;
+                                                });
+                                                if (totalWorkDays === 0)
+                                                    return "0h 0m 0s";
+                                                const avgSeconds =
+                                                    totalSeconds /
+                                                    totalWorkDays;
+                                                const avgH = Math.floor(
+                                                    avgSeconds / 3600
                                                 );
-                                            return totalWorkDays > 0
-                                                ? (
-                                                      totalWeeklyHours /
-                                                      totalWorkDays
-                                                  ).toFixed(2)
-                                                : "0.00";
-                                        })()}
+                                                const avgM = Math.floor(
+                                                    (avgSeconds % 3600) / 60
+                                                );
+                                                const avgS = Math.floor(
+                                                    avgSeconds % 60
+                                                );
+                                                return `${avgH}h ${avgM}m ${avgS}s`;
+                                            })()
+                                        }
                                     </td>
                                 </tr>
                             </tbody>
