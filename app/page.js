@@ -429,10 +429,10 @@ const Home = () => {
             // === Weekly Rows
             weeks.forEach((week, rowIndex) => {
                 const row = [
-                    rowIndex === 0 ? employee.employeeId : "",
-                    rowIndex === 0 ? employee.fullName : "",
-                    rowIndex === 0 ? employee.designation : "",
-                    rowIndex === 0 ? employee.department : "",
+                    rowIndex === 0 ? profile?.employeeId : "",
+                    rowIndex === 0 ? profile?.fullName : "",
+                    rowIndex === 0 ? profile?.designation?.name : "",
+                    rowIndex === 0 ? profile?.department?.name : "",
                     week.week,
                     weekTasks[rowIndex]?.[0]?.dailyHours || 8,
                     (weekTasks[rowIndex]?.[0]?.dailyHours || 8) * week.workDays,
