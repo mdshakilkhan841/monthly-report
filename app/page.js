@@ -18,6 +18,30 @@ const Home = () => {
     const [error, setError] = useState("");
     const [dataSource, setDataSource] = useState("api"); // "api" or "file"
     const [jsonFile, setJsonFile] = useState(null);
+    const [profile, setProfile] = useState({
+        employeeId: "",
+        fullName: "",
+        designation: { name: "" },
+        department: { name: "" },
+    });
+
+    const fetchProfile = async ({ token }) => {
+        const url = `/api/profile?token=${token}`;
+        try {
+            const response = await fetch(url, {
+                method: "GET",
+            });
+            if (!response.ok) {
+                throw new Error(`Failed to fetch profile: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log("🚀 ~ fetchProfile ~ data:", data);
+            return data;
+        } catch (error) {
+            console.log("🚀 ~ fetchProfile ~ error:", error);
+        }
+    };
 
     const fetchAttendanceReport = async ({
         fromDate,
@@ -51,6 +75,8 @@ const Home = () => {
         setLoading(true);
         setError("");
         try {
+            const profile = await fetchProfile({ token });
+            setProfile(profile.data);
             const res = await fetchAttendanceReport({
                 fromDate,
                 toDate,
@@ -185,13 +211,6 @@ const Home = () => {
         () => generateWeeks(),
         [attendanceData, fromDate, toDate]
     );
-
-    const employee = {
-        employeeId: "710003676",
-        fullName: "Md. Shakil Khan",
-        designation: "Junior App Developer", // Placeholder, not in JSON
-        department: "Software", // Placeholder, not in JSON
-    };
 
     const [weekTasks, setWeekTasks] = useState(
         weeks.map(() => [
@@ -821,25 +840,79 @@ const Home = () => {
                                                 rowSpan={weeks.length}
                                                 className="p-3 border text-center"
                                             >
-                                                {employee.employeeId}
+                                                <textarea
+                                                    value={profile?.employeeId}
+                                                    onChange={(e) =>
+                                                        setProfile((prev) => ({
+                                                            ...prev,
+                                                            employeeId:
+                                                                e.target.value,
+                                                        }))
+                                                    }
+                                                    className="text-center w-28 resize-y rounded"
+                                                    rows={3}
+                                                />
                                             </td>
                                             <td
                                                 rowSpan={weeks.length}
                                                 className="p-3 border text-center"
                                             >
-                                                {employee.fullName}
+                                                <textarea
+                                                    value={profile?.fullName}
+                                                    onChange={(e) =>
+                                                        setProfile((prev) => ({
+                                                            ...prev,
+                                                            fullName:
+                                                                e.target.value,
+                                                        }))
+                                                    }
+                                                    className="text-center w-36 resize-y rounded"
+                                                    rows={3}
+                                                />
                                             </td>
                                             <td
                                                 rowSpan={weeks.length}
                                                 className="p-3 border text-center"
                                             >
-                                                {employee.designation}
+                                                <textarea
+                                                    value={
+                                                        profile?.designation
+                                                            ?.name
+                                                    }
+                                                    onChange={(e) =>
+                                                        setProfile((prev) => ({
+                                                            ...prev,
+                                                            designation: {
+                                                                name: e.target
+                                                                    .value,
+                                                            },
+                                                        }))
+                                                    }
+                                                    className="text-center w-36 resize-y rounded"
+                                                    rows={3}
+                                                />
                                             </td>
                                             <td
                                                 rowSpan={weeks.length}
                                                 className="p-3 border text-center"
                                             >
-                                                {employee.department}
+                                                <textarea
+                                                    value={
+                                                        profile?.department
+                                                            ?.name
+                                                    }
+                                                    onChange={(e) =>
+                                                        setProfile((prev) => ({
+                                                            ...prev,
+                                                            department: {
+                                                                name: e.target
+                                                                    .value,
+                                                            },
+                                                        }))
+                                                    }
+                                                    className="text-center w-36 resize-y rounded"
+                                                    rows={3}
+                                                />
                                             </td>
                                         </>
                                     )}
