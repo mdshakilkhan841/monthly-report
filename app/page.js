@@ -2,16 +2,13 @@
 
 import React, { useState, useEffect, useMemo } from "react";
 import * as XLSX from "xlsx-js-style";
+import dayjs from "dayjs";
 
 const Home = () => {
-    // UI state
-    const formatDate = (date) => date.toLocaleDateString("sv-SE"); // yyyy-mm-dd
-
-    const today = new Date();
-    const firstOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-
-    const [fromDate, setFromDate] = useState(formatDate(firstOfMonth));
-    const [toDate, setToDate] = useState(formatDate(today));
+    const [fromDate, setFromDate] = useState(
+        dayjs().subtract(1, "month").date(16).format("YYYY-MM-DD")
+    );
+    const [toDate, setToDate] = useState(dayjs().date(15).format("YYYY-MM-DD"));
     const [token, setToken] = useState("");
     const [attendanceData, setAttendanceData] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -703,7 +700,11 @@ const Home = () => {
                         <input
                             type="date"
                             value={fromDate}
-                            onChange={(e) => setFromDate(e.target.value)}
+                            onChange={(e) =>
+                                setFromDate(
+                                    dayjs(e.target.value).format("YYYY-MM-DD")
+                                )
+                            }
                             className="border rounded px-2 py-1"
                         />
                     </div>
@@ -714,7 +715,11 @@ const Home = () => {
                         <input
                             type="date"
                             value={toDate}
-                            onChange={(e) => setToDate(e.target.value)}
+                            onChange={(e) => {
+                                setToDate(
+                                    dayjs(e.target.value).format("YYYY-MM-DD")
+                                );
+                            }}
                             className="border rounded px-2 py-1"
                         />
                     </div>
