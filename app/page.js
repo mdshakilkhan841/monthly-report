@@ -336,6 +336,7 @@ const Home = () => {
             );
 
             return {
+                id: entry.id,
                 date: entryDate.toLocaleDateString("en-GB"),
                 weekday,
                 checkIn: entry.checkIn || "",
@@ -668,6 +669,26 @@ const Home = () => {
             console.error("Export error:", error);
             setError("Failed to export Excel file.");
         }
+    };
+
+    const handleTimeChange = (e, id, field) => {
+        if (!["checkIn", "checkOut"].includes(field)) return;
+
+        setAttendanceData((prev) => {
+            const updatedContent = prev.data.content.map((item) =>
+                item.id === id
+                    ? { ...item, [field]: e.target.value || "" }
+                    : item
+            );
+
+            return {
+                ...prev,
+                data: {
+                    ...prev.data,
+                    content: updatedContent,
+                },
+            };
+        });
     };
 
     return (
@@ -1295,6 +1316,10 @@ const Home = () => {
                         </thead>
                         <tbody>
                             {fullAttendanceRows?.map((row, index) => {
+                                console.log(
+                                    "🚀 ~ {fullAttendanceRows?.map ~ row:",
+                                    row
+                                );
                                 const weekNum = parseInt(
                                     row.week?.replace("Week ", "")
                                 );
@@ -1316,10 +1341,32 @@ const Home = () => {
                                             {row.weekday}
                                         </td>
                                         <td className="py-2 px-4 border">
-                                            {row.checkIn}
+                                            <input
+                                                type="text"
+                                                value={row.checkIn}
+                                                onChange={(e) =>
+                                                    handleTimeChange(
+                                                        e,
+                                                        row.id,
+                                                        "checkIn"
+                                                    )
+                                                }
+                                                className="border rounded w-24"
+                                            />
                                         </td>
                                         <td className="py-2 px-4 border">
-                                            {row.checkOut}
+                                            <input
+                                                type="text"
+                                                value={row.checkOut}
+                                                onChange={(e) =>
+                                                    handleTimeChange(
+                                                        e,
+                                                        row.id,
+                                                        "checkOut"
+                                                    )
+                                                }
+                                                className="border rounded w-24"
+                                            />
                                         </td>
                                         <td className="py-2 px-4 border">
                                             {row.workedDuration || "--"}
