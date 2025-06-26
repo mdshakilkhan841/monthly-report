@@ -1303,7 +1303,7 @@ const Home = () => {
 
             <div className="mb-8">
                 <h2 className="text-2xl font-semibold mb-3 text-gray-800">
-                    Full Attendance Sheet
+                    Full Attendance Sheet (ESS)
                 </h2>
                 <div className="overflow-x-auto mb-8">
                     <table className="table-fixed min-w-max shadow-md border border-gray-300 rounded-lg">
