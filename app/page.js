@@ -725,7 +725,7 @@ const Home = () => {
                     </div>
                     <div>
                         <label className="block text-gray-700 mb-1">
-                            Bearer Token
+                            Bearer Token (Paste your ESS authorization token)
                         </label>
                         <input
                             type="text"

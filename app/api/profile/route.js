@@ -14,7 +14,7 @@ export async function GET(request) {
     try {
         const res = await fetch(apiUrl, {
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `${token}`,
                 Accept: "application/json",
             },
             cache: "no-store",
