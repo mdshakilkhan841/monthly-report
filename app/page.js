@@ -662,7 +662,7 @@ const Home = () => {
     };
 
     return (
-        <div className="container mx-auto p-6">
+        <div className="container mx-auto p-6 bg-white text-black">
             <div className="mb-8">
                 <div className="mb-4 flex gap-6 items-end">
                     <div>
