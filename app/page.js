@@ -427,8 +427,16 @@ const Home = () => {
             // === Weekly Rows
             weeks.forEach((week, rowIndex) => {
                 const row = [
-                    rowIndex === 0 ? profile?.employeeId : "",
-                    rowIndex === 0 ? profile?.fullName : "",
+                    rowIndex === 0
+                        ? profile?.employeeId ||
+                          attendanceData?.data?.content[0]?.employeeInfo
+                              ?.employeeId
+                        : "",
+                    rowIndex === 0
+                        ? profile?.fullName ||
+                          attendanceData?.data?.content[0]?.employeeInfo
+                              ?.fullName
+                        : "",
                     rowIndex === 0 ? profile?.designation?.name : "",
                     rowIndex === 0 ? profile?.department?.name : "",
                     week.week,
