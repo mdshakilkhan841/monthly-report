@@ -1316,6 +1316,7 @@ const Home = () => {
                                 <th className="py-2 px-4 border">
                                     Worked Duration
                                 </th>
+                                <th className="py-2 px-4 border">Remarks</th>
                                 <th className="py-2 px-4 border">Week</th>
                             </tr>
                         </thead>
@@ -1356,7 +1357,7 @@ const Home = () => {
                                                         "checkIn"
                                                     )
                                                 }
-                                                className="border rounded w-24"
+                                                className="border rounded w-24 text-center"
                                             />
                                         </td>
                                         <td className="py-2 px-4 border">
@@ -1370,11 +1371,14 @@ const Home = () => {
                                                         "checkOut"
                                                     )
                                                 }
-                                                className="border rounded w-24"
+                                                className="border rounded w-24 text-center"
                                             />
                                         </td>
-                                        <td className="py-2 px-4 border">
+                                        <td className="py-2 px-4 border text-center">
                                             {row.workedDuration || "--"}
+                                        </td>
+                                        <td className="py-2 px-4 border">
+                                            {row.remarks}
                                         </td>
                                         <td className="py-2 px-4 border">
                                             {row.week}
