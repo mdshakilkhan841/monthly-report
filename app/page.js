@@ -21,6 +21,7 @@ const Home = () => {
         designation: { name: "" },
         department: { name: "" },
     });
+    const [diaryLink, setDiaryLink] = useState("");
 
     const fetchProfile = async ({ token }) => {
         const url = `/api/profile?token=${token}`;
@@ -424,7 +425,11 @@ const Home = () => {
                 );
             }
 
-            const headerRow = [...baseHeaders, ...taskHeaders, ""];
+            const headerRow = [
+                ...baseHeaders,
+                ...taskHeaders,
+                "Scanned Diary Link",
+            ];
             data.push(headerRow);
 
             // === Weekly Rows
@@ -461,7 +466,7 @@ const Home = () => {
                     row.push("", "", "", "");
                 }
 
-                row.push("");
+                row.push(rowIndex === 0 ? "http://example.com/diary" : ""); // scanned diary link
                 data.push(row);
             });
 
@@ -727,7 +732,7 @@ const Home = () => {
                         </div>
                     )}
                 </div>
-                <div className="flex flex-wrap gap-4 items-end">
+                <div className="mb-4 flex flex-wrap gap-4 items-end">
                     <div>
                         <label className="block text-gray-700 mb-1">
                             From Date
@@ -790,6 +795,18 @@ const Home = () => {
                     >
                         Export to Excel
                     </button>
+                </div>
+                <div className="flex gap-4 items-end">
+                    <label className="block text-gray-700 mb-1">
+                        Diary Link :
+                    </label>
+                    <input
+                        type="text"
+                        value={diaryLink}
+                        onChange={(e) => setDiaryLink(e.target.value)}
+                        className="border rounded px-2 py-1 w-80"
+                        placeholder="Paste Diary link"
+                    />
                 </div>
                 {error && (
                     <div className="mb-4 text-red-600 font-semibold">
