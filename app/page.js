@@ -420,7 +420,7 @@ const Home = () => {
                 );
             }
 
-            const headerRow = [...baseHeaders, ...taskHeaders, "Add Task"];
+            const headerRow = [...baseHeaders, ...taskHeaders, ""];
             data.push(headerRow);
 
             // === Weekly Rows
