@@ -10,7 +10,7 @@ const Home = () => {
     );
     const [toDate, setToDate] = useState(dayjs().date(15).format("YYYY-MM-DD"));
     const [token, setToken] = useState("");
-    const [attendanceData, setAttendanceData] = useState([]);
+    const [attendanceData, setAttendanceData] = useState({});
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [dataSource, setDataSource] = useState("api"); // "api" or "file"
@@ -80,7 +80,8 @@ const Home = () => {
                 size: 100,
                 token,
             });
-            setAttendanceData(res.data.content || []);
+            console.log("🚀 ~ handleFetch ~ res:", res);
+            setAttendanceData(res || {});
         } catch (err) {
             setError(err.message || "Failed to fetch data");
         }
@@ -100,7 +101,7 @@ const Home = () => {
             const weekEnd = new Date(currentDate);
             weekEnd.setDate(weekEnd.getDate() + 6);
 
-            const weekData = attendanceData.filter((entry) => {
+            const weekData = attendanceData?.data?.content?.filter((entry) => {
                 const entryDate = new Date(entry.date);
                 return entryDate >= weekStart && entryDate <= weekEnd;
             });
@@ -108,7 +109,7 @@ const Home = () => {
             let workDays = 0;
             let totalActualSeconds = 0;
 
-            weekData.forEach((entry) => {
+            weekData?.forEach((entry) => {
                 const isWeekend = entry.remarks?.includes("WEEKEND");
                 const isThursday = new Date(entry.date).getDay() === 4; // Skip fake weekend
                 const isHoliday = entry.remarks?.includes("HOLIDAY");
@@ -267,7 +268,7 @@ const Home = () => {
                     token,
                     size: 100,
                 });
-                setAttendanceData(res.data || []);
+                setAttendanceData(res || {});
             } catch (err) {
                 setError(err.message || "Failed to fetch data");
             }
@@ -280,7 +281,7 @@ const Home = () => {
             try {
                 const text = await jsonFile.text();
                 const data = JSON.parse(text);
-                setAttendanceData(data.content);
+                setAttendanceData(data);
             } catch (err) {
                 setError("Invalid JSON file.");
             }
@@ -323,7 +324,7 @@ const Home = () => {
     const fullAttendanceRows = useMemo(() => {
         const weeksWithDates = generateWeeks();
 
-        return attendanceData.map((entry) => {
+        return attendanceData?.data?.content?.map((entry) => {
             const entryDate = new Date(entry.date);
             const weekday = entryDate.toLocaleDateString("en-US", {
                 weekday: "long",
@@ -846,7 +847,13 @@ const Home = () => {
                                                 className="p-3 border text-center"
                                             >
                                                 <textarea
-                                                    value={profile?.employeeId}
+                                                    value={
+                                                        profile?.employeeId ||
+                                                        attendanceData?.data
+                                                            ?.content[0]
+                                                            ?.employeeInfo
+                                                            ?.employeeId
+                                                    }
                                                     onChange={(e) =>
                                                         setProfile((prev) => ({
                                                             ...prev,
@@ -863,7 +870,13 @@ const Home = () => {
                                                 className="p-3 border text-center"
                                             >
                                                 <textarea
-                                                    value={profile?.fullName}
+                                                    value={
+                                                        profile?.fullName ||
+                                                        attendanceData?.data
+                                                            ?.content[0]
+                                                            ?.employeeInfo
+                                                            ?.fullName
+                                                    }
                                                     onChange={(e) =>
                                                         setProfile((prev) => ({
                                                             ...prev,
@@ -1273,7 +1286,7 @@ const Home = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {fullAttendanceRows.map((row, index) => {
+                            {fullAttendanceRows?.map((row, index) => {
                                 const weekNum = parseInt(
                                     row.week?.replace("Week ", "")
                                 );
