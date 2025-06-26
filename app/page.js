@@ -399,7 +399,9 @@ const Home = () => {
                 border: allBorders(),
             };
 
-            const data = [["Employee Weekly Summary"]];
+            const data = [
+                [`Employee Weekly Summary (${dayjs().format("MMMM YYYY")})`],
+            ];
 
             // === Headers
             const baseHeaders = [
@@ -542,7 +544,10 @@ const Home = () => {
 
                     // Table titles
                     if (
-                        data[R]?.[0] === "Employee Weekly Summary" ||
+                        data[R]?.[0] ===
+                            `Employee Weekly Summary (${dayjs().format(
+                                "MMMM YYYY"
+                            )})` ||
                         data[R]?.[0] === "Week Details"
                     ) {
                         ws[cellRef].s = {
@@ -592,10 +597,10 @@ const Home = () => {
                         const bgColor =
                             weekExcelColors[weekIdx % weekExcelColors.length];
                         ws[cellRef].s = {
-                            fill: {
-                                patternType: "solid",
-                                fgColor: { rgb: bgColor },
-                            },
+                            // fill: {
+                            //     patternType: "solid",
+                            //     fgColor: { rgb: bgColor },
+                            // },
                             border: allBorders(),
                         };
                         continue;
