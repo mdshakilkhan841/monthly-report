@@ -801,7 +801,7 @@ const Home = () => {
             {/* Employee Weekly Summary */}
             <div className="mb-8">
                 <h2 className="text-2xl font-semibold mb-3 text-gray-800">
-                    Employee Weekly Summary
+                    {`Employee Weekly Summary (${dayjs().format("MMMM YYYY")})`}
                 </h2>
                 <div className="w-full overflow-x-auto">
                     <table className="table-fixed min-w-max shadow-md rounded-lg border border-gray-300">
