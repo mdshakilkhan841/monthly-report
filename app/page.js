@@ -466,7 +466,7 @@ const Home = () => {
                     row.push("", "", "", "");
                 }
 
-                row.push(rowIndex === 0 ? "http://example.com/diary" : ""); // scanned diary link
+                row.push(rowIndex === 0 ? diaryLink : ""); // scanned diary link
                 data.push(row);
             });
 
